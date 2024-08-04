@@ -1,0 +1,11 @@
+<!-- templates/options_page.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="button-container">
+    
+    <button class="algo-button" onclick="location.href='{{ url_for('spreadsheet') }}'">Go to Spreadsheet</button>
+    <button class="algo-button" onclick="location.href='{{ url_for('process_data') }}'">Process Data</button>
+   
+</div>
+{% endblock %}

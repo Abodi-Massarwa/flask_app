@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spreadsheet Options for {{ algorithm.name }}</title>
+</head>
+<body>
+    <h1>Spreadsheet Options for {{ algorithm.name }}</h1>
+    <form action="{{ url_for('process_spreadsheet', route=algorithm.route) }}" method="post">
+        <button class="algo-button" type="submit">Process {{ algorithm.name }} Data</button>
+    </form>
+    <p>OR</p>
+    <button class="algo-button" onclick="location.href='{{ algorithm.sheet_url }}'">Open Google Spreadsheet</button>
+</body>
+</html>

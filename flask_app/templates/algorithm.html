@@ -1,6 +1,23 @@
 {% extends "base.html" %}
+
+{% block title %}{{ algorithm.name }}{% endblock %}
+
 {% block content %}
-    <h2>{{ title }}</h2>
-    <p>{{ description }}</p>
-    <p>Additional content about {{ title }} goes here.</p>
+<div class="algorithm-container">
+    <div class="container">
+        <div class="project-name">
+            <h1>{{ algorithm.name }}</h1>
+     
+            <p class="project-description">{{ algorithm.description }}</p>
+     
+            <div class="button-container">
+                <button class='algo-button' onclick="location.href='{{ url_for('form_page', algorithm=algorithm.route) }}'">Go to Form Page</button>
+                <p>OR</p>
+                <button class="algo-button" onclick="location.href='{{ url_for('future_feature', algorithm=algorithm.route) }}'">Go to Options Page</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
+
+

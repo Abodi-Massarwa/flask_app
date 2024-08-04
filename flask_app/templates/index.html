@@ -14,4 +14,49 @@
         <button class="algo-button" onclick="location.href='/algorithm5'">Algorithm 5</button>
     </div>
 </div>
+
+<div class="audio-player">
+    <audio id="background-music" controls loop>
+        <source src="{{ url_for('static', filename='music/tenderness.mp3') }}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <button id="play-button">Play Music</button>
+    <button id="mute-button" style="display: none;">Mute</button>
+</div>
+
+<style>
+    #play-button, #mute-button {
+        cursor: pointer;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const audio = document.getElementById("background-music");
+        const playButton = document.getElementById("play-button");
+        const muteButton = document.getElementById("mute-button");
+
+        playButton.addEventListener("click", function() {
+            audio.play();
+            playButton.style.display = 'none';
+            muteButton.style.display = 'inline';
+        });
+
+        muteButton.addEventListener("click", function() {
+            if (audio.muted) {
+                audio.muted = false;
+                muteButton.textContent = "Mute";
+            } else {
+                audio.muted = true;
+                muteButton.textContent = "Unmute";
+            }
+        });
+    });
+</script>
 {% endblock %}

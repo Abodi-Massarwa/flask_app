@@ -1,0 +1,35 @@
+{% extends "base_form.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Submit Your Data for Algorithm 5</h1>
+    <form method="post" action="{{ url_for('form_page', algorithm=algorithm) }}">
+        {{ form.hidden_tag() }}
+        
+        <label for="item_categories">Item Categories</label>
+        {{ form.item_categories(id="item_categories") }}
+        {% for error in form.item_categories.errors %}
+            <div class="error-message">[{{ error }}]</div>
+        {% endfor %}
+
+        <label for="item_capacities">Item Capacities</label>
+        {{ form.item_capacities(id="item_capacities") }}
+        {% for error in form.item_capacities.errors %}
+            <div class="error-message">[{{ error }}]</div>
+        {% endfor %}
+
+        <label for="category_capacities">Category Capacities</label>
+        {{ form.category_capacities(id="category_capacities") }}
+        {% for error in form.category_capacities.errors %}
+            <div class="error-message">[{{ error }}]</div>
+        {% endfor %}
+
+        <label for="item_valuations">Item Valuations</label>
+        {{ form.item_valuations(id="item_valuations") }}
+        {% for error in form.item_valuations.errors %}
+            <div class="error-message">[{{ error }}]</div>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}

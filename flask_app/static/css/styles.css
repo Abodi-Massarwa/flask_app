@@ -190,3 +190,28 @@ body {
     margin-bottom: 1rem;
 }
 
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto; /* Pushes footer to the bottom of the page */
+}
+
+.footer-content p {
+    margin: 0;
+    padding: 5px 0;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.footer-content p a {
+    color: #007aff;
+    text-decoration: none;
+}
+
+.footer-content p a:hover {
+    color: #005bb5;
+    text-decoration: underline;
+}

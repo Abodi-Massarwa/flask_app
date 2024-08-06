@@ -3,4 +3,32 @@
 {% block content %}
 <h1>Algorithm Result</h1>
 <p>{{ result }}</p>
+
+<h2>Graph Animation</h2>
+<div id="slideshow">
+    {% for img_data in images_data %}
+    <img class="slide" src="data:image/png;base64,{{ img_data }}" style="display:none;"/>
+    {% endfor %}
+</div>
+
+<script type="text/javascript">
+    var current = 0;
+    var slides = document.querySelectorAll('.slide');
+    
+    function showNextSlide() {
+        if (slides.length > 0) {
+            slides[current].style.display = 'none';
+            current = (current + 1) % slides.length;
+            slides[current].style.display = '';
+        }
+    }
+    
+    setInterval(showNextSlide, 1800); // Time between slides in milliseconds
+    
+    // Initially show the first slide if there are any slides
+    if (slides.length > 0) {
+        slides[current].style.display = '';
+    }
+</script>
+
 {% endblock %}

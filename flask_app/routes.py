@@ -212,6 +212,11 @@ def form_page(algorithm):
 
 @app.route('/process_data/<algorithm>')
 def process_data(algorithm):
+    images_data = []
+    
+    def store_visualization(img_base64):# used to get us the images from fairpyx !
+        images_data.append(img_base64)
+
     form = None
     form=session['form_data']
     #print(f'process_data page form is -> {form} and its type is _>{type(form)}')
@@ -222,9 +227,10 @@ def process_data(algorithm):
             item_valuations = ast.literal_eval(form['item_valuations'])
             initial_agent_order = ast.literal_eval(form['initial_agent_order'])
             alloc=AllocationBuilder(Instance(item_capacities=item_capacities, valuations=item_valuations))
-            per_category_round_robin(item_categories=item_categories, agent_category_capacities=category_capacities, initial_agent_order=initial_agent_order, alloc=alloc)
+            per_category_round_robin(item_categories=item_categories, agent_category_capacities=category_capacities, initial_agent_order=initial_agent_order, alloc=alloc,callback=store_visualization)
             #print(f'algorithm 1 allocation result is {result}')
-            return render_template('result.html', result=alloc.bundles)
+            print(f'images data -> {images_data}')
+            return render_template('result.html', result=alloc.bundles,images_data=images_data)
     elif algorithm == 'algorithm2':
             item_categories = ast.literal_eval(form['item_categories'])
             item_capacities = ast.literal_eval(form['item_capacities'])
@@ -235,7 +241,7 @@ def process_data(algorithm):
             print(f"TARGET CATEGORY IS->{form['target_category']}")
             alloc=AllocationBuilder(Instance(item_capacities=item_capacities, valuations=item_valuations))
             result = capped_round_robin(item_categories=item_categories, agent_category_capacities=category_capacities, initial_agent_order=initial_agent_order, alloc=alloc,target_category=target_category)
-            return render_template('result.html', result=alloc.bundles)
+            return render_template('result.html', result=alloc.bundles,images_data=images_data)
     elif algorithm == 'algorithm3':
             item_categories = ast.literal_eval(form['item_categories'])
             item_capacities = ast.literal_eval(form['item_capacities'])
@@ -245,7 +251,7 @@ def process_data(algorithm):
             target_category_pair = ast.literal_eval(form['target_category_pair'])
             alloc=AllocationBuilder(Instance(item_capacities=item_capacities, valuations=item_valuations))
             result = two_categories_capped_round_robin(item_categories=item_categories, agent_category_capacities=category_capacities, initial_agent_order=initial_agent_order, alloc=alloc,target_category_pair=target_category_pair)
-            return render_template('result.html', result=alloc.bundles)
+            return render_template('result.html', result=alloc.bundles,images_data=images_data)
     elif algorithm == 'algorithm4':
             item_categories = ast.literal_eval(form['item_categories'])
             item_capacities = ast.literal_eval(form['item_capacities'])
@@ -254,15 +260,17 @@ def process_data(algorithm):
             initial_agent_order = ast.literal_eval(form['initial_agent_order'])
             alloc=AllocationBuilder(Instance(item_capacities=item_capacities, valuations=item_valuations))
             result = per_category_capped_round_robin(item_categories=item_categories, agent_category_capacities=category_capacities, initial_agent_order=initial_agent_order, alloc=alloc)
-            return render_template('result.html', result=alloc.bundles)
+            return render_template('result.html', result=alloc.bundles,images_data=images_data)
     elif algorithm == 'algorithm5':
             item_categories = ast.literal_eval(form['item_categories'])
             item_capacities = ast.literal_eval(form['item_capacities'])
             category_capacities = ast.literal_eval(form['category_capacities'])
             item_valuations = ast.literal_eval(form['item_valuations'])
+            print(f'Algorithm5 input: \n item_categories ->{item_categories} ,\n item_capacities->{item_capacities},\n category_capacities -> {category_capacities},\n item_valuations ->{item_valuations}\n **************************************************')
             alloc=AllocationBuilder(Instance(item_capacities=item_capacities, valuations=item_valuations))
-            result = iterated_priority_matching(item_categories=item_categories, agent_category_capacities=category_capacities, alloc=alloc)
-            return render_template('result.html', result=alloc.bundles)
+            iterated_priority_matching(item_categories=item_categories, agent_category_capacities=category_capacities, alloc=alloc,callback=store_visualization)
+            print(f'images data -> {images_data}')
+            return render_template('result.html', result=alloc.bundles,images_data=images_data)
 
     errors = form.errors if form else {}
     return render_template(f'{algorithm}_form_page.html', form=form, errors=errors, algorithm=algorithm)
@@ -289,3 +297,5 @@ def spreadsheet():
 # def process_data():
 #     # Logic to process data
 #     return "Data processed successfully"
+
+

@@ -146,29 +146,29 @@ from flask_app.forms import Algorithm1Form, Algorithm2Form , Algorithm3Form, Alg
 
 
 algorithms = [
-    {"name": "Per-Category Round-Robin", "route": "algorithm1", "description": """this is the Algorithm 1 from the paper
+    {"name": "Per-Category Round-Robin", "route": "algorithm1", "description": """this is the Algorithm 1 from the paper<br>
      per category round-robin is an allocation algorithm which guarantees EF1 (envy-freeness up to 1 good) allocation
-    under settings in which agent-capacities are equal across all agents,
-    no capacity-inequalities are allowed since this algorithm doesnt provie a cycle-prevention mechanism
+    under settings in which agent-capacities are equal across all agents,<br>
+    no capacity-inequalities are allowed since this algorithm doesnt provie a cycle-prevention mechanism<br>
     TLDR: same partition, same capacities, may have different valuations across agents  -> EF1 allocation"""},
-    {"name": "Capped Round-Robin", "route": "algorithm2", "description": """this is Algorithm 2 CRR (capped round-robin) algorithm TLDR: single category , may have differnt capacities
+    {"name": "Capped Round-Robin", "route": "algorithm2", "description": """this is Algorithm 2 CRR (capped round-robin) algorithm <br>TLDR: single category , may have differnt capacities
     capped in CRR stands for capped capacity for each agent unlke RR , maye have different valuations -> F-EF1 (
     feasible envy-freeness up to 1 good) allocation"""},
-    {"name": "Back&Forth RR(Round-Robin)", "route": "algorithm3", "description": """this is Algorithm 3 back and forth capped round-robin algorithm (2 categories,may have different capacities,may have different valuations)
-        in which we simply
-        1)call capped_round_robin(arg1 ,.... argk,item_categories=<first category>)
-        2) reverse(order)
-        3)call capped_round_robin(arg1 ,.... argk,item_categories=<second category>)
+    {"name": "Back&Forth RR(Round-Robin)", "route": "algorithm3", "description": """this is Algorithm 3 back and forth capped round-robin algorithm<br> (2 categories,may have different capacities,may have different valuations)
+        in which we simply<br>
+        1)call capped_round_robin(arg1 ,.... argk,item_categories=<first category>)<br>
+        2) reverse(order)<br>
+        3)call capped_round_robin(arg1 ,.... argk,item_categories=<second category>)<br>
         -> F-EF1 (feasible envy-freeness up to 1 good) allocation"""},
-    {"name": "Per-Category CRR(Capped-Round-Robin)", "route": "algorithm4", "description": """ this is Algorithm 4 deals with (Different Capacities, Identical Valuations), suitable for any number of categories
-    CRR (per-category capped round-robin) algorithm
+    {"name": "Per-Category CRR(Capped-Round-Robin)", "route": "algorithm4", "description": """ this is Algorithm 4 deals with (Different Capacities, Identical Valuations),<br> suitable for any number of categories
+    CRR (per-category capped round-robin) algorithm<br>
     TLDR: multiple categories , may have different capacities , but have identical valuations -> F-EF1 (feasible envy-freeness up to 1 good) allocation"""},
-    {"name": "Iterated Priority Matching", "route": "algorithm5", "description": """this is Algorithm 5  deals with (partition Matroids with Binary Valuations, may have different capacities)
-    loops as much as maximum capacity in per each category , each iteration we build :
-    1) agent-item graph (bidirectional graph)
-    2) envy graph
-    3) topological sort the order based on the envy graph (always a-cyclic under such settings,proven in papers)
-    4) compute priority matching based on it we allocate the items among the agents
+    {"name": "Iterated Priority Matching", "route": "algorithm5", "description": """this is Algorithm 5  deals with (partition Matroids with Binary Valuations, may have different capacities)<br>
+    loops as much as maximum capacity in per each category , each iteration we build :<br>
+    1) agent-item graph (bidirectional graph)<br>
+    2) envy graph<br>
+    3) topological sort the order based on the envy graph (always a-cyclic under such settings,proven in papers)<br>
+    4) compute priority matching based on it we allocate the items among the agents<br>
     we do this each loop , and in case there remains item in that category we arbitrarily give it to random agent
 """},
 ]

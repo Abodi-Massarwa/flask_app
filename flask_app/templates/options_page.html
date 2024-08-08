@@ -1,11 +1,17 @@
-<!-- templates/options_page.html -->
 {% extends "base.html" %}
 
+{% block title %}Options{% endblock %}
+
 {% block content %}
-<div class="button-container">
-    
-    <button class="algo-button" onclick="location.href='{{ url_for('spreadsheet') }}'">Go to Spreadsheet</button>
-    <button class="algo-button" onclick="location.href='{{ url_for('process_data') }}'">Process Data</button>
-   
+<div class="container">
+    <div class="hero">
+        <h1 class="project-name">Choose Your Action</h1>
+        <p class="project-description">Select one of the following actions to proceed with your task.</p>
+    </div>
+
+    <div class="button-container">
+        <button class="algo-button" onclick="location.href='{{ url_for('spreadsheet') }}'">Go to Spreadsheet</button>
+        <button class="algo-button" onclick="location.href='{{ url_for('process_data') }}'">Process Data</button>
+    </div>
 </div>
 {% endblock %}

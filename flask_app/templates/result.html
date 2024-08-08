@@ -1,14 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Algorithm Result</h1>
-<p>{{ result }}</p>
+<div class="container algorithm-container">
+    <h1>Algorithm Result</h1>
+    <p>{{ result }}</p>
 
-<h2>Graph Animation</h2>
-<div id="slideshow">
-    {% for img_data in images_data %}
-    <img class="slide" src="data:image/png;base64,{{ img_data }}" style="display:none;"/>
-    {% endfor %}
+    <h2>Graph Animation</h2>
+    <div id="slideshow">
+        {% for img_data in images_data %}
+        <img class="slide" src="data:image/png;base64,{{ img_data }}" style="display:none;"/>
+        {% endfor %}
+    </div>
+
+    <div class="button-container">
+    <button id="toggleLogsButton" class="algo-button">Show Logs</button>
+</div>
+    <div id="logsContainer" style="display:none;">
+        <h2>Algorithm Logs</h2>
+        <pre>
+            {% for log in logs %}
+                {{ log }}
+            {% endfor %}
+        </pre>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -29,6 +43,17 @@
     if (slides.length > 0) {
         slides[current].style.display = '';
     }
+    
+    // Toggle logs visibility
+    document.getElementById('toggleLogsButton').addEventListener('click', function() {
+        var logsContainer = document.getElementById('logsContainer');
+        if (logsContainer.style.display === 'none') {
+            logsContainer.style.display = 'block';
+            this.textContent = 'Hide Logs';
+        } else {
+            logsContainer.style.display = 'none';
+            this.textContent = 'Show Logs';
+        }
+    });
 </script>
-
 {% endblock %}

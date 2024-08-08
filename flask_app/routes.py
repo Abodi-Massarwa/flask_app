@@ -128,12 +128,16 @@
 # #                      endpoint=algorithm["route"], 
 # #                      view_func=partial(algorithm_template, algorithm["name"], algorithm["description"]))
 
+import fairpyx.algorithms.heterogeneous_matroid_constraints_algorithms
+import fairpyx.algorithms.heterogeneous_matroid_constraints_algorithms
+import fairpyx.algorithms.heterogeneous_matroid_constraints_algorithms
 from flask import session
 from flask_app import app
 import gspread
 from flask import render_template, request, redirect, url_for
 from functools import partial
 from fairpyx.algorithms.heterogeneous_matroid_constraints_algorithms import per_category_round_robin,capped_round_robin,two_categories_capped_round_robin,per_category_capped_round_robin,iterated_priority_matching
+from fairpyx.algorithms.heterogeneous_matroid_constraints_algorithms import *
 #from .forms import InputForm 
 from fairpyx.allocations import AllocationBuilder, Instance
 import ast
@@ -220,6 +224,7 @@ def process_data(algorithm):
     form = None
     form=session['form_data']
     #print(f'process_data page form is -> {form} and its type is _>{type(form)}')
+    fairpyx.algorithms.heterogeneous_matroid_constraints_algorithms.helper_configure_logger()
     if algorithm == 'algorithm1':
             item_categories = ast.literal_eval(form['item_categories'])
             item_capacities = ast.literal_eval(form['item_capacities'])
@@ -230,7 +235,8 @@ def process_data(algorithm):
             per_category_round_robin(item_categories=item_categories, agent_category_capacities=category_capacities, initial_agent_order=initial_agent_order, alloc=alloc,callback=store_visualization)
             #print(f'algorithm 1 allocation result is {result}')
             print(f'images data -> {images_data}')
-            return render_template('result.html', result=alloc.bundles,images_data=images_data)
+            logs=helper_get_logs()
+            return render_template('result.html', result=alloc.bundles,images_data=images_data,logs=logs.splitlines())
     elif algorithm == 'algorithm2':
             item_categories = ast.literal_eval(form['item_categories'])
             item_capacities = ast.literal_eval(form['item_capacities'])
@@ -240,8 +246,9 @@ def process_data(algorithm):
             target_category = ast.literal_eval(form['target_category'])
             print(f"TARGET CATEGORY IS->{form['target_category']}")
             alloc=AllocationBuilder(Instance(item_capacities=item_capacities, valuations=item_valuations))
-            result = capped_round_robin(item_categories=item_categories, agent_category_capacities=category_capacities, initial_agent_order=initial_agent_order, alloc=alloc,target_category=target_category)
-            return render_template('result.html', result=alloc.bundles,images_data=images_data)
+            capped_round_robin(item_categories=item_categories, agent_category_capacities=category_capacities, initial_agent_order=initial_agent_order, alloc=alloc,target_category=target_category)
+            logs=helper_get_logs()
+            return render_template('result.html', result=alloc.bundles,images_data=images_data,logs=logs.splitlines())
     elif algorithm == 'algorithm3':
             item_categories = ast.literal_eval(form['item_categories'])
             item_capacities = ast.literal_eval(form['item_capacities'])
@@ -250,8 +257,9 @@ def process_data(algorithm):
             initial_agent_order = ast.literal_eval(form['initial_agent_order'])
             target_category_pair = ast.literal_eval(form['target_category_pair'])
             alloc=AllocationBuilder(Instance(item_capacities=item_capacities, valuations=item_valuations))
-            result = two_categories_capped_round_robin(item_categories=item_categories, agent_category_capacities=category_capacities, initial_agent_order=initial_agent_order, alloc=alloc,target_category_pair=target_category_pair)
-            return render_template('result.html', result=alloc.bundles,images_data=images_data)
+            two_categories_capped_round_robin(item_categories=item_categories, agent_category_capacities=category_capacities, initial_agent_order=initial_agent_order, alloc=alloc,target_category_pair=target_category_pair)
+            logs=helper_get_logs()
+            return render_template('result.html', result=alloc.bundles,images_data=images_data,logs=logs.splitlines)
     elif algorithm == 'algorithm4':
             item_categories = ast.literal_eval(form['item_categories'])
             item_capacities = ast.literal_eval(form['item_capacities'])
@@ -259,8 +267,9 @@ def process_data(algorithm):
             item_valuations = ast.literal_eval(form['item_valuations'])
             initial_agent_order = ast.literal_eval(form['initial_agent_order'])
             alloc=AllocationBuilder(Instance(item_capacities=item_capacities, valuations=item_valuations))
-            result = per_category_capped_round_robin(item_categories=item_categories, agent_category_capacities=category_capacities, initial_agent_order=initial_agent_order, alloc=alloc)
-            return render_template('result.html', result=alloc.bundles,images_data=images_data)
+            per_category_capped_round_robin(item_categories=item_categories, agent_category_capacities=category_capacities, initial_agent_order=initial_agent_order, alloc=alloc)
+            logs=helper_get_logs()
+            return render_template('result.html', result=alloc.bundles,images_data=images_data,logs=logs.splitlines())
     elif algorithm == 'algorithm5':
             item_categories = ast.literal_eval(form['item_categories'])
             item_capacities = ast.literal_eval(form['item_capacities'])
@@ -270,7 +279,8 @@ def process_data(algorithm):
             alloc=AllocationBuilder(Instance(item_capacities=item_capacities, valuations=item_valuations))
             iterated_priority_matching(item_categories=item_categories, agent_category_capacities=category_capacities, alloc=alloc,callback=store_visualization)
             print(f'images data -> {images_data}')
-            return render_template('result.html', result=alloc.bundles,images_data=images_data)
+            logs=helper_get_logs()
+            return render_template('result.html', result=alloc.bundles,images_data=images_data,logs=logs.splitlines())
 
     errors = form.errors if form else {}
     return render_template(f'{algorithm}_form_page.html', form=form, errors=errors, algorithm=algorithm)

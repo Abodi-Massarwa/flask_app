@@ -8,7 +8,7 @@ contourpy==1.2.1
 cvxpy-base==1.5.2
 cycler==0.12.1
 experiments_csv==0.5.5
-fairpyx @ git+https://github.com/Abodi-Massarwa/fairpyx.git@d5f6f0f93e8d2ac85edee3554b46fda269f8250f
+fairpyx @ git+https://github.com/Abodi-Massarwa/fairpyx.git@ac41343f1793e2859b2c6c02f202788287cae359
 Flask==3.0.3
 Flask-WTF==1.2.1
 fonttools==4.53.1

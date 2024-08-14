@@ -6,6 +6,13 @@
 <div class="hero">
     <h1 class="project-name">On Fair Division under Heterogeneous Matroid Constraints</h1>
     <p class="project-description">This project showcases several algorithms which focus on achieving fair envy-free allocations amongst Heterogeneous agents with different capacities and preferences.</p>
+    <div class="audio-player">
+        <audio id="background-music" controls loop>
+            <source src="{{ url_for('static', filename='music/tenderness.mp3') }}" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        
+    </div>
     <div class="button-container">
         <button class="algo-button" onclick="location.href='/algorithm1'">Algorithm 1</button>
         <button class="algo-button" onclick="location.href='/algorithm2'">Algorithm 2</button>
@@ -15,13 +22,6 @@
     </div>
 </div>
 
-<div class="audio-player">
-    <audio id="background-music" controls loop>
-        <source src="{{ url_for('static', filename='music/tenderness.mp3') }}" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
-    <button id="play-button">Play Music</button>
-    <button id="mute-button" style="display: none;">Mute</button>
 </div>
 
 <style>

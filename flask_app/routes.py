@@ -265,9 +265,9 @@ def result_page(algorithm):
                                                                                            num_of_items=ast.literal_eval(form_data['num_items']),
                                                                                            item_capacity_bounds=(1, 1),
                                                                                            random_seed_num=0)
-        alloc = divide(algorithm=per_category_round_robin, instance=instance,
+        alloc = divide(algorithm=iterated_priority_matching, instance=instance,
                    item_categories=categories, agent_category_capacities=agent_category_capacities,
-                   initial_agent_order=initial_agent_order,callback=store_visualization)
+                   callback=store_visualization)
         logs=helper_get_logs(log_stream)
     else:
         return "Algorithm not found", 404 

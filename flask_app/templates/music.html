@@ -1,0 +1,47 @@
+<!-- music.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+</head>
+<body>
+    <audio id="background-music" controls autoplay loop>
+        <source src="{{ url_for('static', filename='music/tenderness.mp3') }}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <button id="mute-button">Mute</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const audio = document.getElementById("background-music");
+            const muteButton = document.getElementById("mute-button");
+
+            // Retrieve the stored state
+            const isMuted = localStorage.getItem('isMuted') === 'true';
+
+            // Apply the stored state
+            if (isMuted) {
+                audio.muted = true;
+                muteButton.textContent = "Unmute";
+            } else {
+                audio.play();
+                muteButton.textContent = "Mute";
+            }
+
+            muteButton.addEventListener("click", function() {
+                if (audio.muted) {
+                    audio.muted = false;
+                    muteButton.textContent = "Mute";
+                    localStorage.setItem('isMuted', 'false');
+                } else {
+                    audio.muted = true;
+                    muteButton.textContent = "Unmute";
+                    localStorage.setItem('isMuted', 'true');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

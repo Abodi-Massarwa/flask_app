@@ -2,8 +2,29 @@
 
 {% block content %}
 <div class="container algorithm-container">
-    <h1>Algorithm Result</h1>
-    <p class="algorithm-result">{{ result }}</p>
+    <h1>Algorithm Result for {{ algorithm }}</h1>
+
+    <h2>Instance Details</h2>
+    <div class="instance-details">
+        <p><strong>Instance:</strong> {{ instance }}</p>
+        <p><strong>Agent Category Capacities:</strong> {{ agent_category_capacities }}</p>
+        <p><strong>Categories:</strong> {{ categories }}</p>
+
+        {% if algorithm != 'algorithm5' %}
+            <p><strong>Initial Agent Order:</strong> {{ initial_agent_order }}</p>
+        {% endif %}
+
+        {% if algorithm == 'algorithm2' %}
+            <p><strong>Target Category:</strong> {{ target_category }}</p>
+        {% elif algorithm == 'algorithm3' %}
+            <p><strong>Target Category Pair:</strong> {{ target_category_pair }}</p>
+        {% endif %}
+    </div>
+
+    <h2>Algorithm Result</h2>
+    <div class="algorithm-result">
+        <p>{{ result }}</p>
+    </div>
 
     <h2>Graph Animation</h2>
     <div id="slideshow">
@@ -58,3 +79,4 @@
     });
 </script>
 {% endblock %}
+

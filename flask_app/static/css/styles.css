@@ -247,3 +247,281 @@ footer {
     font-weight: 700;
     margin-bottom: 10px;
 }
+/* Scoped styling specifically for algorithm result pages */
+.algorithm-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f2f2f7;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+    margin: 2rem auto;
+    text-align: left;
+}
+
+.algorithm-container h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1c1c1e;
+    margin-bottom: 20px;
+}
+
+.algorithm-container p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #3a3a3c;
+    margin-bottom: 1rem;
+}
+
+.algorithm-container .algo-button {
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.algorithm-container .algo-button:hover {
+    background-color: #005bb5;
+}
+
+/* Log content styling for result.html */
+/* Log content styling for result.html */
+.log-content {
+    font-family: Menlo, Monaco, "Courier New", Courier, monospace;
+    background-color: #fafafa; /* Light background for contrast */
+    color: #333; /* Darker text for readability */
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 6px solid #007aff; /* Blue border for emphasis */
+    line-height: 1.5;
+    font-size: 14px;
+    text-align: left;
+    overflow-x: auto; /* Ensure horizontal scroll if necessary */
+    white-space: pre-wrap; /* Preserve line breaks but allow wrapping */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+
+#logsContainer {
+    overflow-x: auto;
+    background-color: #f2f2f7; /* Slightly lighter background */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Match the log content shadow */
+    margin-top: 20px;
+}
+
+#logsContainer h2 {
+    color: #007aff; /* Blue color for consistency */
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+/* Add other elements here that are specific to the result page */
+/* Updated algorithm-container styling for a more breathable layout */
+.algorithm-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: transparent; /* Remove background color to blend with the page */
+    padding: 20px 0; /* Reduce padding to give more space */
+    border-radius: 0; /* Remove border radius for a more open layout */
+    box-shadow: none; /* Remove the box shadow to make the container less boxed in */
+    width: 90%;
+    max-width: 1200px; /* Make the container wider */
+    margin: 0 auto; /* Center the container but allow it to stretch more */
+    text-align: center; /* Center text for a more open feel */
+}
+
+/* Remove any extra padding from paragraphs */
+.algorithm-container p {
+    padding: 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+/* Keep the log styling but make it blend in more */
+.log-content {
+    font-family: Menlo, Monaco, "Courier New", Courier, monospace;
+    background-color: #ffffff; /* Use a lighter background for contrast */
+    color: #333;
+    padding: 15px 20px;
+    border-left: 4px solid #007aff; /* Thinner border for a subtle look */
+    line-height: 1.5;
+    font-size: 14px;
+    text-align: left;
+    overflow-x: auto; /* Keep horizontal scroll if necessary */
+    white-space: pre-wrap; /* Keep line breaks */
+    box-shadow: none; /* Remove shadow to keep it light */
+    border-radius: 8px; /* Slightly rounded corners */
+}
+
+#logsContainer {
+    overflow-x: auto;
+    background-color: transparent; /* Match the page background */
+    padding: 10px 0; /* Reduce padding to give more space */
+    border-radius: 0; /* Remove border radius */
+    box-shadow: none; /* Remove shadow */
+    margin-top: 20px;
+    width: 90%; /* Ensure it aligns with the container */
+    max-width: 1200px;
+}
+
+/* Consistent h2 styling */
+.algorithm-container h2 {
+    color: #1c1c1e; /* Subtle black for headers */
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+/* General styling for content sections */
+.algorithm-container h2 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600;
+    color: #1c1c1e;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.algorithm-container p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1rem;
+    color: #3a3a3c;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.algorithm-container strong {
+    color: #007aff; /* Apple-like blue color for emphasis */
+}
+
+.algorithm-container .algorithm-result {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Subtle transition effects for hover states */
+.algorithm-container p:hover {
+    color: #007aff;
+    transition: color 0.3s ease;
+}
+
+/* General styling for content sections */
+.algorithm-container h1, .algorithm-container h2 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600;
+    color: #1c1c1e;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.algorithm-container p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1rem;
+    color: #3a3a3c;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.algorithm-container .algorithm-result {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    color: #333;
+    margin-top: 20px;
+}
+
+.algorithm-container .button-container {
+    margin-top: 20px;
+}
+
+.algorithm-container .algo-button {
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+.algorithm-container .algo-button:hover {
+    background-color: #005bb5;
+}
+
+/* Log content styling for result.html */
+.log-content {
+    font-family: Menlo, Monaco, "Courier New", Courier, monospace;
+    background-color: #ffffff; /* Light background for contrast */
+    color: #333; /* Darker text for readability */
+    padding: 15px 20px;
+    border-left: 4px solid #007aff; /* Blue border for emphasis */
+    line-height: 1.5;
+    font-size: 14px;
+    text-align: left;
+    overflow-x: auto; /* Ensure long lines do not wrap */
+    white-space: pre-wrap; /* Preserve line breaks but allow wrapping */
+    box-shadow: none; /* Remove shadow to keep it light */
+    border-radius: 8px; /* Slightly rounded corners */
+}
+
+#logsContainer {
+    overflow-x: auto;
+    background-color: transparent; /* Match the page background */
+    padding: 10px 0; /* Reduce padding to give more space */
+    border-radius: 0; /* Remove border radius */
+    box-shadow: none; /* Remove shadow */
+    margin-top: 20px;
+    width: 90%; /* Ensure it aligns with the container */
+    max-width: 1200px;
+}
+
+/* Consistent h2 styling */
+.algorithm-container h2 {
+    color: #1c1c1e; /* Subtle black for headers */
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+/* Styling for the Instance Details section */
+.instance-details {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Paragraph styling inside Instance Details */
+.instance-details p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #3a3a3c;
+}
+

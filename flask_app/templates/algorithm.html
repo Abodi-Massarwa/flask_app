@@ -11,8 +11,22 @@
         <div class="button-container">
             <button class='algo-button' onclick="location.href='{{ url_for('form_page', algorithm=algorithm.route) }}'">Go to Form Page</button>
             <p>OR</p>
-            <button class="algo-button" onclick="location.href='{{ url_for('future_feature', algorithm=algorithm.route) }}'">Go to Options Page</button>
+            <button class="algo-button" onclick="redirectToOptions('{{ algorithm.route }}')">Random Instace Generator</button>
         </div>
     </div>
 </div>
+
+<script>
+function redirectToOptions(algorithmRoute) {
+    if (algorithmRoute === 'algorithm1') {
+        location.href = "{{ url_for('generate_instance', algorithm='algorithm1') }}";
+    } else if (algorithmRoute === 'algorithm2') {
+        location.href = "{{ url_for('generate_instance', algorithm='algorithm2') }}";
+    } else if (algorithmRoute === 'algorithm3') {
+        location.href = "{{ url_for('generate_instance', algorithm='algorithm3') }}";
+    } else {
+        alert('No options page available for this algorithm.');
+    }
+}
+</script>
 {% endblock %}

@@ -1,0 +1,78 @@
+{% extends "base_form.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Select Values to Generate Instance for {{ algorithm }}</h1>
+    <form method="post" action="{{ url_for('generate_instance', algorithm=algorithm) }}">
+        {{ form.hidden_tag() }}
+        
+        <div class="scroll-container">
+            <label for="num_items">Number of Items</label>
+            <select id="num_items" name="num_items" onchange="updateCategories()">
+                {% for i in range(1, 51) %}  <!-- Adjust range(1, 51) as needed -->
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="num_categories">Number of Categories</label>
+            <select id="num_categories" name="num_categories" onchange="updateTargetCategory()">
+                {% for i in range(1, 11) %}  <!-- Initial range, will be updated by JavaScript -->
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="num_agents">Number of Agents</label>
+            <select id="num_agents" name="num_agents">
+                {% for i in range(1, 21) %}  <!-- Adjust range(1, 21) as needed -->
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="target_category">Target Category</label>
+            <select id="target_category" name="target_category">
+                <!-- Options will be dynamically generated based on the number of categories -->
+                <option value="">Select Number of Categories First</option>
+            </select>
+        </div>
+        
+        <button type="submit">Generate Instance</button>
+    </form>
+</div>
+
+<script>
+function updateCategories() {
+    var numItems = document.getElementById("num_items").value;
+    var numCategories = document.getElementById("num_categories");
+
+    // Clear current options
+    numCategories.innerHTML = "";
+
+    // Add new options based on the number of items selected
+    for (var i = 1; i <= numItems; i++) {
+        var option = document.createElement("option");
+        option.value = i;
+        option.text = i;
+        numCategories.appendChild(option);
+    }
+
+    // Update the target category options based on the new number of categories
+    updateTargetCategory();
+}
+
+function updateTargetCategory() {
+    var numCategories = document.getElementById("num_categories").value;
+    var targetCategory = document.getElementById("target_category");
+
+    // Clear current options
+    targetCategory.innerHTML = "";
+
+    // Add new options based on the number of categories selected
+    for (var i = 1; i <= numCategories; i++) {
+        var option = document.createElement("option");
+        option.value = i;
+        option.text = "Category " + i;
+        targetCategory.appendChild(option);
+    }
+}
+</script>
+{% endblock %}

@@ -516,6 +516,7 @@ footer {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     color: #333;
     margin-bottom: 20px;
+    white-space: pre-wrap; /* Preserve line breaks and white space */
 }
 
 /* Paragraph styling inside Instance Details */
@@ -524,6 +525,7 @@ footer {
     font-size: 1rem;
     color: #3a3a3c;
 }
+
 
 
 

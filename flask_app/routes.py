@@ -242,7 +242,6 @@ def result_page(algorithm):
                                                                                            num_of_items=ast.literal_eval(form_data['num_items']),
                                                                                            item_capacity_bounds=(1, 1),
                                                                                            random_seed_num=0)
-        print(f'CRR target category is ->{form_data["target_category"]}')
         alloc = divide(algorithm=two_categories_capped_round_robin, instance=instance,
                    item_categories=categories, agent_category_capacities=agent_category_capacities,
                    initial_agent_order=initial_agent_order,target_category_pair=(f'c{ast.literal_eval(form_data["target_category1"])}',f'c{ast.literal_eval(form_data["target_category2"])}'))
@@ -254,9 +253,9 @@ def result_page(algorithm):
                                                                                            num_of_items=ast.literal_eval(form_data['num_items']),
                                                                                            item_capacity_bounds=(1, 1),
                                                                                            random_seed_num=0)
-        alloc = divide(algorithm=per_category_round_robin, instance=instance,
+        alloc = divide(algorithm=per_category_capped_round_robin, instance=instance,
                    item_categories=categories, agent_category_capacities=agent_category_capacities,
-                   initial_agent_order=initial_agent_order)
+                   initial_agent_order=initial_agent_order,callback=store_visualization)
         logs=helper_get_logs(log_stream)
     elif algorithm=='algorithm5':
         instance, agent_category_capacities, categories, initial_agent_order = random_instance(binary_valuations=True,

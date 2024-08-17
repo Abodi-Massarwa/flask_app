@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Flask App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_experimental.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="/">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+        </a>
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Music Player iframe -->
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <footer>
+        <div class="footer-content">
+            <p>© 2024 On Fair Division under Heterogeneous Matroid Constraints. All rights reserved.</p>
+            <p>research conducted by Dror, Feldman, Segal-Halevi (2020), https://arxiv.org/abs/2010.07280v4</p>
+            <p>Website designed & code written by Abed El Kareem Massarwa</p>
+        </div>
+    </footer>
+</body>
+</html>

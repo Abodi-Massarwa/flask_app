@@ -216,37 +216,11 @@ footer {
     text-decoration: underline;
 }
 
-.log-content {
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #282c34; /* Dark background for contrast */
-    color: #61dafb; /* Light blue text for readability and modern look */
-    padding: 15px 20px;
-    border-left: 6px solid #ff9800; /* Bright orange border for emphasis */
-    border-radius: 8px;
-    line-height: 1.6;
-    font-size: 16px;
-    text-align: left;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
-    max-width: 100%;
-    font-weight: bold; /* Make text a bit thicker */
-}
 
-#logsContainer {
-    overflow-x: auto;
-    background-color: #1e2229; /* Dark background for the container */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Match the log content shadow */
-}
 
-#logsContainer h2 {
-    color: #ff9800; /* Match the border color */
-    font-weight: 700;
-    margin-bottom: 10px;
-}
+
+
+
 /* Scoped styling specifically for algorithm result pages */
 .algorithm-container {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -294,37 +268,10 @@ footer {
 
 /* Log content styling for result.html */
 /* Log content styling for result.html */
-.log-content {
-    font-family: Menlo, Monaco, "Courier New", Courier, monospace;
-    background-color: #fafafa; /* Light background for contrast */
-    color: #333; /* Darker text for readability */
-    padding: 20px;
-    border-radius: 12px;
-    border-left: 6px solid #007aff; /* Blue border for emphasis */
-    line-height: 1.5;
-    font-size: 14px;
-    text-align: left;
-    overflow-x: auto; /* Ensure horizontal scroll if necessary */
-    white-space: pre-wrap; /* Preserve line breaks but allow wrapping */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-}
 
 
-#logsContainer {
-    overflow-x: auto;
-    background-color: #f2f2f7; /* Slightly lighter background */
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Match the log content shadow */
-    margin-top: 20px;
-}
 
-#logsContainer h2 {
-    color: #007aff; /* Blue color for consistency */
-    font-weight: 600;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-}
+
 
 /* Add other elements here that are specific to the result page */
 /* Updated algorithm-container styling for a more breathable layout */
@@ -350,31 +297,9 @@ footer {
 }
 
 /* Keep the log styling but make it blend in more */
-.log-content {
-    font-family: Menlo, Monaco, "Courier New", Courier, monospace;
-    background-color: #ffffff; /* Use a lighter background for contrast */
-    color: #333;
-    padding: 15px 20px;
-    border-left: 4px solid #007aff; /* Thinner border for a subtle look */
-    line-height: 1.5;
-    font-size: 14px;
-    text-align: left;
-    overflow-x: auto; /* Keep horizontal scroll if necessary */
-    white-space: pre-wrap; /* Keep line breaks */
-    box-shadow: none; /* Remove shadow to keep it light */
-    border-radius: 8px; /* Slightly rounded corners */
-}
 
-#logsContainer {
-    overflow-x: auto;
-    background-color: transparent; /* Match the page background */
-    padding: 10px 0; /* Reduce padding to give more space */
-    border-radius: 0; /* Remove border radius */
-    box-shadow: none; /* Remove shadow */
-    margin-top: 20px;
-    width: 90%; /* Ensure it aligns with the container */
-    max-width: 1200px;
-}
+
+
 
 /* Consistent h2 styling */
 .algorithm-container h2 {
@@ -477,27 +402,30 @@ footer {
     font-family: Menlo, Monaco, "Courier New", Courier, monospace;
     background-color: #ffffff; /* Light background for contrast */
     color: #333; /* Darker text for readability */
-    padding: 15px 20px;
     border-left: 4px solid #007aff; /* Blue border for emphasis */
     line-height: 1.5;
     font-size: 14px;
-    text-align: left;
-    overflow-x: auto; /* Ensure long lines do not wrap */
-    white-space: pre-wrap; /* Preserve line breaks but allow wrapping */
+    text-align: left !important; /* Force text alignment to the left */
     box-shadow: none; /* Remove shadow to keep it light */
     border-radius: 8px; /* Slightly rounded corners */
+    padding: 0; /* Remove all padding to align text to the left */
+    margin: 0; /* Ensure no margin adds space inside the content */
+    white-space: pre; /* Preserve whitespace and prevent wrapping */
+    overflow-x: auto; /* Enable horizontal scrolling for long lines */
 }
 
 #logsContainer {
     overflow-x: auto;
     background-color: transparent; /* Match the page background */
-    padding: 10px 0; /* Reduce padding to give more space */
+    padding: 0; /* Remove padding to align content to the left */
     border-radius: 0; /* Remove border radius */
     box-shadow: none; /* Remove shadow */
-    margin-top: 20px;
-    width: 90%; /* Ensure it aligns with the container */
-    max-width: 1200px;
+    margin: 0; /* Ensure no margin adds space inside the content */
+    width: 100%; /* Full width to align content to the left */
+    max-width: 100%; /* Ensure container takes up the full width */
+    text-align: left !important; /* Force container text alignment to the left */
 }
+
 
 /* Consistent h2 styling */
 .algorithm-container h2 {

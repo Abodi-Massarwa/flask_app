@@ -195,7 +195,7 @@ def generate_instance(algorithm):
     if form and request.method == 'POST' and form.validate_on_submit():
         # Store the form data in session
         session['form_data'] = {field.name: field.data for field in form}
-
+        print(session['form_data'])
         # Redirect to the result page
         return redirect(url_for('result_page', algorithm=algorithm))
 
@@ -224,6 +224,7 @@ def result_page(algorithm):
                    initial_agent_order=initial_agent_order,callback=store_visualization)
         logs=helper_get_logs(log_stream)
     elif algorithm == 'algorithm2':
+        target_category=f"category{ast.literal_eval(form_data['target_category'])}"
         instance, agent_category_capacities, categories, initial_agent_order = random_instance(equal_capacities=False,
                                                                                            category_count=ast.literal_eval(form_data['num_categories']),
                                                                                            num_of_agents=ast.literal_eval(form_data['num_agents']),
@@ -236,6 +237,7 @@ def result_page(algorithm):
                    initial_agent_order=initial_agent_order,target_category=f'c{ast.literal_eval(form_data["target_category"])}')
         logs=helper_get_logs(log_stream)
     elif algorithm == 'algorithm3':
+        target_category_pair=(f"category{ast.literal_eval(form_data['target_category1'])}",f"category{ast.literal_eval(form_data['target_category2'])}")
         instance, agent_category_capacities, categories, initial_agent_order = random_instance(equal_capacities=False,
                                                                                            category_count=ast.literal_eval(form_data['num_categories']),
                                                                                            num_of_agents=ast.literal_eval(form_data['num_agents']),

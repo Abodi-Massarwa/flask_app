@@ -34,20 +34,43 @@
 </div>
 
 <script>
-function updateCategories() {
-    var numItems = document.getElementById("num_items").value;
-    var numCategories = document.getElementById("num_categories");
-
-    // Clear current options
-    numCategories.innerHTML = "";
-
-    // Add new options based on the number of items selected
-    for (var i = 1; i <= numItems; i++) {
-        var option = document.createElement("option");
-        option.value = i;
-        option.text = i;
-        numCategories.appendChild(option);
+    function updateCategories() {
+        var numItems = document.getElementById("num_items").value;
+        var numCategories = document.getElementById("num_categories");
+    
+        // Clear current options
+        numCategories.innerHTML = "";
+    
+        // Add new options based on the number of items selected
+        for (var i = 1; i <= numItems; i++) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.text = i;
+            numCategories.appendChild(option);
+        }
+    
+        // Ensure the selected number of categories doesn't exceed the number of items
+        if (numCategories.value > numItems) {
+            numCategories.value = numItems;
+        }
     }
-}
-</script>
+    
+    document.getElementById("num_items").addEventListener("change", function() {
+        updateCategories();
+        validateItemsAndCategories();
+    });
+    
+    document.getElementById("num_categories").addEventListener("change", validateItemsAndCategories);
+    
+    function validateItemsAndCategories() {
+        var numItems = document.getElementById("num_items").value;
+        var numCategories = document.getElementById("num_categories").value;
+    
+        if (parseInt(numCategories) > parseInt(numItems)) {
+            alert("Number of categories cannot exceed the number of items. Adjusting the number of categories.");
+            numCategories = numItems;
+            document.getElementById("num_categories").value = numItems;
+        }
+    }
+    </script>    
 {% endblock %}

@@ -27,10 +27,13 @@
     </div>
 
     <h2>Graph Animation</h2>
-    <div id="slideshow">
-        {% for img_data in images_data %}
-        <img class="slide" src="data:image/png;base64,{{ img_data }}" style="display:none;"/>
-        {% endfor %}
+    <div id="imageContainer" class="image-container">
+        <img id="currentImage" src="data:image/png;base64,{{ images_data[0] }}" class="current-image" />
+    </div>
+
+    <div class="navigation-container">
+        <button id="prevButton" class="nav-arrow left-arrow">&larr;</button>
+        <button id="nextButton" class="nav-arrow right-arrow">&rarr;</button>
     </div>
 
     <div class="button-container">
@@ -47,25 +50,72 @@
     </div>
 </div>
 
+<style>
+    .image-container {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .current-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .navigation-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto 10px;
+    }
+
+    .nav-arrow {
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #333;
+        cursor: pointer;
+        padding: 0 20px;
+    }
+
+    .nav-arrow:hover {
+        color: #000;
+    }
+
+    .left-arrow {
+        text-align: left;
+    }
+
+    .right-arrow {
+        text-align: right;
+    }
+
+    .button-container {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+</style>
+
 <script type="text/javascript">
     var current = 0;
-    var slides = document.querySelectorAll('.slide');
+    var imagesData = {{ images_data|tojson }};
+    var currentImageElement = document.getElementById('currentImage');
     
-    function showNextSlide() {
-        if (slides.length > 0) {
-            slides[current].style.display = 'none';
-            current = (current + 1) % slides.length;
-            slides[current].style.display = '';
+    document.getElementById('prevButton').addEventListener('click', function() {
+        if (current > 0) {
+            current--;
+            currentImageElement.src = "data:image/png;base64," + imagesData[current];
         }
-    }
-    
-    setInterval(showNextSlide, 3000); // Time between slides in milliseconds
-    
-    // Initially show the first slide if there are any slides
-    if (slides.length > 0) {
-        slides[current].style.display = '';
-    }
-    
+    });
+
+    document.getElementById('nextButton').addEventListener('click', function() {
+        if (current < imagesData.length - 1) {
+            current++;
+            currentImageElement.src = "data:image/png;base64," + imagesData[current];
+        }
+    });
+
     // Toggle logs visibility
     document.getElementById('toggleLogsButton').addEventListener('click', function() {
         var logsContainer = document.getElementById('logsContainer');
@@ -79,4 +129,3 @@
     });
 </script>
 {% endblock %}
-
